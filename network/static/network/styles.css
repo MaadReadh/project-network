@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  margin-top: 0;
+  margin-right: 0; 
+  margin-bottom: 0;
+  margin-left: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin-bottom: 0;
+}
+
+html,body{
+  height: 100%;
+}
+
+a,
+a:active,
+a:hover {
+  text-decoration: none;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+}
+
+.body{
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  width: 500px;
+  margin: auto;
+  border-style: solid;
+  border-color: lavender;
+  border-width: 0 1px;
+}
+
+.btn-light{
+  background-color: lavender;
+}
+
+ 
+
+.post {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-bottom: 1px solid lavender;
+  gap: 5px;
+}
+
+.post_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post_name_and_date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post_date {
+  color: gray;
+}
+
+.following_button, .edit_button {
+  color: #144273;
+}
+
+.post_footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post_footer i{
+  color: gray;
+}
+
+ 
+
+.post_like_button {
+  display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.post_like_button .likes_count {
+  color: gray;
+}
+
+
+#index textarea[name="content"]{
+  border: none;
+  resize: none; 
+  box-shadow: none !important;
+}
+
+form#create_post{
+  padding: 20px;
+  border-bottom: 1px solid lavender;
+}
+
+form#create_post input[type=submit]{
+  display: block;
+  margin-left: auto;
+}
+
+
+#profile .details{
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-bottom: 1px solid lavender;
+  gap: 5px;
+}
+
+
+
+
+
+

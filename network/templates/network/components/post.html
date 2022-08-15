@@ -1,0 +1,52 @@
+{% load crispy_forms_tags %} 
+
+<div class="post">
+  <div class="post_header">
+    <div class="post_name_and_date">
+
+      <a       
+      {% if user.is_authenticated %}
+        href="{% url 'profile' post.user.id %}"
+      {% else %} 
+        href="{% url 'login'  %}"
+      {% endif %} 
+      class="post_user">
+        <h6>
+          {{post.user}}
+        </h6>
+      </a>
+      <small class="post_date">
+        {{post.creation_date}}
+      </small>
+    </div>
+  </div>
+  <div class="post_body">
+    <p class="post_content" id="post_content_{{post.id}}">
+      {{post.content}}
+    </p>
+    <form id="edit_post_form_{{post.id}}" onsubmit="edit(event,{{post.id}})" style="display:none;">
+      <fieldset>
+        {% csrf_token %} 
+        {{post_form | crispy}}
+        <div style="display:flex;justify-content: end;gap:10px;">
+          <input id="submit_edit_post_{{post.id}}"  type="submit" class="btn btn-primary btn-sm" value="Save">
+          <button id="cancel_edit_post_{{post.id}}" class="btn btn-light" onclick="toggle_content_ui({{post.id}})">Cancel</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="post_footer">
+    {% if user.is_authenticated %}
+      <button class="post_like_button btn btn-light" onclick="like(this,{{post.id}})">
+        <i class="fa-heart fa-regular {% if user in post.likes.all %} fa-solid text-danger{% endif %}"></i>
+        <small class="likes_count">
+          {{post.likes_count}}
+        </small>
+      </button>
+
+      {% if post.user == user %}
+        <button id="edit_post_button_{{post.id}}" onclick="toggle_content_ui({{post.id}})" class="btn btn-light btn-sm edit_button">Edit</button>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>

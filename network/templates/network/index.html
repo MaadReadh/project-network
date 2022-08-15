@@ -1,0 +1,24 @@
+{% extends "network/layout.html" %} 
+{% load crispy_forms_tags %} 
+{% load static %} 
+
+
+
+{% block body %} 
+    <div id="index">
+        {% if user.is_authenticated %}
+            <form id="create_post" action="{% url 'create_post' %}" method="post">
+                {% csrf_token %} 
+                {{post_form | crispy}}
+                <input id="submit_post"  type="submit" class="btn btn-primary btn-sm" value="Post">
+            </form>
+        {% endif %}
+
+        {% for post in paginated_posts %}
+            {% include 'network/components/post.html' with post=post post_form=post_form %}
+        {% endfor %}
+
+        {% include 'network/components/paginator.html' with paginated_posts=paginated_posts %}
+    </div>
+    <script  src="{% static 'network/index.js' %}"></script>
+{% endblock %}

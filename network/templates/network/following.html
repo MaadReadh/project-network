@@ -1,0 +1,15 @@
+{% extends "network/layout.html" %} 
+{% load crispy_forms_tags %} 
+{% load static %} 
+
+
+
+{% block body %} 
+    <div id="profile">
+        {% for post in paginated_posts %}
+            {% include 'network/components/post.html' with post=post post_form=post_form %}
+        {% endfor %}
+    </div>
+    {% include 'network/components/paginator.html' with paginated_posts=paginated_posts %}
+    <script  src="{% static 'network/index.js' %}"></script>
+{% endblock %}
